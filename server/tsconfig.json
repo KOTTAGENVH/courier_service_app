@@ -1,13 +1,25 @@
-// tsconfig.json
 {
-    "compilerOptions": {
-      "module": "ESNext",
-      "esModuleInterop": true,
-      "target": "ES6",
-      "moduleResolution": "node",
-      "sourceMap": true,
-      "outDir": "dist",
-      "lib": ["es2015"],
-      "strict": true,
-    }
+  "compilerOptions": {
+    "module": "ESNext",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2023",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "strictBindCallApply": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "strictPropertyInitialization": false
   }
+}
