@@ -55,10 +55,11 @@ export default function Home() {
         try {
             setIsLoading(true);
             const res = await signup(values);
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            dispatch(setUserDetails((res as any)?.data?.user));
-            if (res.success) {
-                router.push("/home");
+
+            if (res.success && res?.user) {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                dispatch(setUserDetails((res as any)?.user));
+                alert(res.message);
             } else {
                 alert(res.message);
             }

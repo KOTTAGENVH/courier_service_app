@@ -10,20 +10,29 @@ export interface SignupPayload {
   confirmPassword: string;
 }
 
+export interface User {
+  firstName: string;
+  lastName: string;
+  email: string;
+  address: string;
+  telephone: string;
+}
+
 export interface AuthResponse {
   success: boolean;
   message: string;
+  user?: User;
   details?: { field: string; constraints: Record<string, string> }[];
 }
 
 //Login
 export const login = async (email: string, password: string) => {
-        const response = await apiClient.post("/auth/login", {
-            email,
-            password,
-        },
-            { withCredentials: true });
-        return response;
+  const response = await apiClient.post("/auth/login", {
+    email,
+    password,
+  },
+    { withCredentials: true });
+  return response;
 };
 
 //Signup
