@@ -5,7 +5,7 @@ module.exports = {
     return [
       {
         source: '/api/:path*',
-        destination: 'https://courier-service-app-knnl.vercel.app/api/:path*'
+        destination: 'https://courier-service-app-knnl.vercel.app/:path*'
       }
     ];
   }
