@@ -13,7 +13,6 @@ export const customEmail = async (
   try {
     const senderEmail = process.env.EMAIL!;
     const password = process.env.PASS!;
-
     // Create a transporter with Gmail service
     const mailTransporter: Transporter = nodemailer.createTransport({
       service: "gmail",
@@ -27,7 +26,7 @@ export const customEmail = async (
       from: senderEmail,
       to: email,
       subject,
-      text: body,
+      html: body,
     };
 
     await mailTransporter.sendMail(mailDetails);

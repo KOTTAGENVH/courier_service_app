@@ -36,6 +36,7 @@ model User {
 
 model Shipment {
   id                 Int              @id @default(autoincrement())
+  shippingId         String           @unique
   senderAddress      String
   receiverFirstName  String
   receiverLastName   String
@@ -52,6 +53,7 @@ model Shipment {
   userId             Int
   user               User             @relation("UserShipments", fields: [userId], references: [id])
   notifications      Notification[]   @relation("ShipmentNotifications")
+  weight             Float
 }
 
 model Notification {

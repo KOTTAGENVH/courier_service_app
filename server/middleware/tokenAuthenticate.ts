@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import * as jwt from 'jsonwebtoken';
-import type { JwtPayload } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 
 export const authMiddleware = async (
     req: Request,
@@ -18,10 +17,10 @@ export const authMiddleware = async (
 
         try {
             // Verify current access token
-            const decoded = jwt.verify(accessToken, process.env.JWT_SECRET!) as JwtPayload;
+            const decoded = jwt.verify(accessToken, process.env.JWT_SECRET!) as jwt.JwtPayload;
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
-            req.userId = decoded.userId;
+            req.userEmail = decoded.userEmail;
             next();
         } catch (err) {
             if (err instanceof jwt.TokenExpiredError) {
@@ -30,18 +29,18 @@ export const authMiddleware = async (
                     return;
                 }
                 try {
-                    const refreshDecoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN!) as JwtPayload;
+                    const refreshDecoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN!) as jwt.JwtPayload;
                     const newAccessToken = jwt.sign(
                         { userId: refreshDecoded.userId },
                         process.env.JWT_SECRET!,
-                        { expiresIn: '15m' }
+                        { expiresIn: '2d' }
                     );
                     // Set new access token cookie
                     res.cookie('accessToken', newAccessToken, {
                         httpOnly: true,
                         secure: process.env.NODE_ENV === 'production',
                         sameSite: 'strict',
-                        maxAge: 15 * 60 * 1000,
+                         maxAge: 2 * 24 * 60 * 60 * 1000, // 2 days
                     });
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore

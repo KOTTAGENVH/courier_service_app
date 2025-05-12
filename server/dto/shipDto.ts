@@ -1,13 +1,14 @@
 // dto/shipment.dto.ts
-// dto/shipment.dto.ts
 import {
   IsString,
   IsNotEmpty,
-  IsInt,
   IsEnum,
   IsBoolean,
   IsOptional,
   Length,
+  IsNumber,
+  Min,
+  IsEmail,
 } from 'class-validator';
 
 // Local enum matching Prisma schema values
@@ -43,9 +44,15 @@ export class CreateShipmentDto {
   receiverTelephone!: string;
 
   @IsNotEmpty()
-  @IsInt()
-  userId!: number;
+  @IsEmail({}, { message: 'Must be a valid email' })
+  userEmail!: string;
+
+  @IsNotEmpty()
+  @IsNumber({}, { message: 'Weight must be a number' })
+  @Min(0, { message: 'Weight must be at least 0' })
+  weight!: number;
 }
+
 
 export class UpdateShipmentStatusDto {
   @IsNotEmpty()
@@ -53,11 +60,6 @@ export class UpdateShipmentStatusDto {
   status!: ShipmentStatus;
 }
 
-export class DelayShipmentDto {
-  @IsNotEmpty()
-  @IsBoolean()
-  delayFlag!: boolean;
-}
 
 export class CancelShipmentDto {
   @IsOptional()
