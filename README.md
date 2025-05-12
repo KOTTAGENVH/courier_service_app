@@ -4,7 +4,7 @@
 - https://courier-service-app-lake.vercel.app
 - If you need a build please run the build from the hosting branch.
 
-A simple yet powerful CRUD application for managing a shipments.
+A simple yet powerful CRUD application for managing shipments.
 
 ---
 
