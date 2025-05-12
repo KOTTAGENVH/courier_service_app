@@ -73,7 +73,10 @@ const ChartComponent: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const chartRef = useRef<Chart | null>(null);
 
-    const shipments: ShippingItem[] = data?.ReturnMessage.shippingItems ?? [];
+    const shipments: ShippingItem[] = useMemo(
+        () => data?.ReturnMessage.shippingItems ?? [],
+        [data]
+    );
 
     const statusCounts = useMemo(() => {
         return shipments.reduce<Record<string, number>>((acc, s) => {
@@ -147,6 +150,16 @@ const ChartComponent: React.FC = () => {
 
     if (isLoading) return <div>Loading chart…</div>;
     if (isError) return <div>Error loading shipments.</div>;
+
+    // If there are no shipments, show a fallback message
+    if (!isLoading && !isError && shipments.length === 0) {
+        return (
+            <div className="w-auto md:w-150 mx-full text-center py-8">
+                <h2 className="dark:text-white text-black">Shipments by Status</h2>
+                <p className="text-gray-500 dark:text-gray-400">No data available.</p>
+            </div>
+        );
+    }
 
     return (
         <div className="w-auto md:w-150 mx-full ">
