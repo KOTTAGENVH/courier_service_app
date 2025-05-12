@@ -17,6 +17,7 @@ const app: Application = express();
 const PORT = process.env.PORT || 4000;
 const allowed = [
   "http://localhost:3000",
+  "https://courier-service-app-lake.vercel.app",
 ];
 
 // Middleware
