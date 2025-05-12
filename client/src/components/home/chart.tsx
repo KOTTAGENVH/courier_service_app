@@ -149,7 +149,7 @@ const ChartComponent: React.FC = () => {
     if (isError) return <div>Error loading shipments.</div>;
 
     return (
-        <div className="w-auto mx-full ">
+        <div className="w-auto md:w-150 mx-full ">
             <h2 className='dark:text-white text-black'>Shipments by Status</h2>
             <canvas ref={canvasRef} />
         </div>

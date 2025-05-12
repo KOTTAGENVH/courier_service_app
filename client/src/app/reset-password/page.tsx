@@ -3,8 +3,8 @@ import { LockClosedIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import BgBlurLoader from "@/components/bgBlurLoader";
 import { resetPassword } from "../api/services/auth/api";
 
@@ -22,9 +22,13 @@ const validationSchema = Yup.object({
 
 export default function Home() {
     const [isLoading, setIsLoading] = useState(false);
+      const [token, setToken] = useState("");
     const router = useRouter();
-    const params = useSearchParams();
-    const token = params.get("token") ?? "";
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const t = params.get("token");
+        setToken(t ?? "");
+    }, []);
 
     const initialValues = {
         password: "",

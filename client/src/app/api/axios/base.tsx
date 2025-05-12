@@ -1,12 +1,12 @@
+// axios/base.ts
 import axios from "axios";
 
 // Api Client
-const apiClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL, 
+export const apiClient = axios.create({
+  baseURL: "/api",
+  withCredentials: true,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
   },
 });
-
-export { apiClient };
