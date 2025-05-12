@@ -113,7 +113,6 @@ export default function Page() {
 
                 {data && (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-28">
-                        {/* Shipment Details */}
                         <div className="bg-transparent  backdrop-blur-2xl shadow-2xl  rounded-lg p-8 bg-opacity-80 ">
                             <h2 className="text-lg font-semibold mb-2">Shipment Details</h2>
                             <p><span className="font-medium">ID:</span> {data.shippingId}</p>
@@ -123,7 +122,6 @@ export default function Page() {
                             <p><span className="font-medium">Delay Flag:</span> {data.delayFlag ? 'Yes' : 'No'}</p>
                         </div>
 
-                        {/* Sender Address */}
                         <div className="bg-transparent  backdrop-blur-2xl shadow-2xl  rounded-lg p-8 bg-opacity-80 ">
                             <h2 className="text-lg font-semibold mb-2">Sender Details</h2>
                             <p><span className="font-medium">Name:</span> {data.user.firstName} {data.user.lastName}</p>
@@ -131,7 +129,6 @@ export default function Page() {
                             <p><span className="font-medium">Sender Address:</span> {data.senderAddress}</p>
                         </div>
 
-                        {/* Receiver Info */}
                         <div className="bg-transparent  backdrop-blur-2xl shadow-2xl  rounded-lg p-8 bg-opacity-80 ">
                             <h2 className="text-lg font-semibold mb-2">Receiver Details</h2>
                             <p><span className="font-medium">Name:</span> {data.receiverFirstName} {data.receiverLastName}</p>
@@ -139,7 +136,6 @@ export default function Page() {
                             <p><span className="font-medium">Tel:</span> {data.receiverTelephone}</p>
                         </div>
 
-                        {/* Dates Timeline */}
                         <div className="bg-transparent  backdrop-blur-2xl shadow-2xl  rounded-lg p-8 bg-opacity-80 ">
                             <h2 className="text-lg font-semibold mb-2">Timeline</h2>
                             <p><span className="font-medium">Placed:</span> {data.placedDate ? new Date(data.placedDate).toLocaleString() : '-'}</p>
@@ -149,13 +145,12 @@ export default function Page() {
                             <p><span className="font-medium">Canceled:</span> {data.canceledDate ? new Date(data.canceledDate).toLocaleString() : '-'}</p>
                         </div>
 
-                        {/* Other Details */}
                         <div className="bg-transparent backdrop-blur-2xl shadow-2xl rounded-lg p-8 bg-opacity-80">
                             <h2 className="text-lg font-semibold mb-2">Other Details</h2>
                             <p><span className="font-medium">Flagged:</span> {data.delayFlag ? 'Yes' : 'No'}</p>
                             <p><span className="font-medium">Request to cancel:</span> {data.requestCancel ? 'Yes' : 'No'}</p>
                         </div>
-                        {/* Actions */}
+
                         <div className="bg-transparent backdrop-blur-2xl shadow-2xl rounded-lg p-8 bg-opacity-80">
                             <h2 className="text-lg font-semibold mb-2">Actions</h2>
                             {userEmail === process.env.NEXT_PUBLIC_ADMIN_EMAIL ? (

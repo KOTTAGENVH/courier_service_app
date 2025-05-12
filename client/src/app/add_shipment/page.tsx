@@ -197,8 +197,6 @@ export default function Page() {
                       height={80}
                       className="w-32 h-auto rounded-lg shadow m-2"
                     />
-
-                    {/* RIGHT: the payment form */}
                     <div className="flex-1 space-y-4">
                       <div className="mb-2">
                         <span className="text-lg font-medium">

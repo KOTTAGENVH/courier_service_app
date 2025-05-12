@@ -1,5 +1,5 @@
 "use client"
-import {  LockClosedIcon } from "@heroicons/react/24/outline";
+import { LockClosedIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -10,14 +10,14 @@ import { resetPassword } from "../api/services/auth/api";
 
 // Validation schema using Yup
 const validationSchema = Yup.object({
-  password: Yup.string()
-    .min(8, "Must be at least 8 characters")
-    .matches(/[A-Z]/, "Must contain an uppercase letter")
-    .matches(/[!@#$%^&*(),.?\":{}|<>]/, "Must contain a special character")
-    .required("New password is required"),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password")], "Passwords must match")
-    .required("Please confirm your password"),
+    password: Yup.string()
+        .min(8, "Must be at least 8 characters")
+        .matches(/[A-Z]/, "Must contain an uppercase letter")
+        .matches(/[!@#$%^&*(),.?\":{}|<>]/, "Must contain a special character")
+        .required("New password is required"),
+    confirmPassword: Yup.string()
+        .oneOf([Yup.ref("password")], "Passwords must match")
+        .required("Please confirm your password"),
 });
 
 export default function Home() {
@@ -35,15 +35,15 @@ export default function Home() {
     const handleSubmit = async (values: typeof initialValues, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
         try {
             setIsLoading(true);
-             await resetPassword(
+            await resetPassword(
                 values.password,
                 values.confirmPassword,
                 token
             );
-                router.push('/');
-                setIsLoading(false);
-                setSubmitting(false);
-                
+            router.push('/');
+            setIsLoading(false);
+            setSubmitting(false);
+
         } catch {
             alert('An error occurred. Please try again later.');
             setSubmitting(false);

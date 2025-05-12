@@ -87,7 +87,6 @@ const AdminTable: React.FC = () => {
         accessorKey: 'placedDate',
         header: 'Placed At',
         filterFn: (row, columnId, filterValue) => {
-          // same filter logic as before
           if (
             !filterValue ||
             !Array.isArray(filterValue) ||
@@ -105,7 +104,6 @@ const AdminTable: React.FC = () => {
           return true
         },
         Filter: ({ column }) => {
-          // safely grab the array or default to ['', '']
           const filterValue = (column.getFilterValue() as string[] | undefined) ?? [
             '',
             '',

@@ -102,7 +102,6 @@ export default function Home() {
                     >
                         {({ isSubmitting }) => (
                             <Form className="space-y-4">
-                                {/** First Name */}
                                 <div>
                                     <label htmlFor="firstName" className="block text-sm font-medium dark:text-gray-200">
                                         First Name
@@ -121,8 +120,6 @@ export default function Home() {
                                         {msg => <div className="text-red-600 text-sm mt-1">{msg}</div>}
                                     </ErrorMessage>
                                 </div>
-
-                                {/** Last Name */}
                                 <div>
                                     <label htmlFor="lastName" className="block text-sm font-medium dark:text-gray-200">
                                         Last Name
@@ -141,8 +138,6 @@ export default function Home() {
                                         {msg => <div className="text-red-600 text-sm mt-1">{msg}</div>}
                                     </ErrorMessage>
                                 </div>
-
-                                {/** Address */}
                                 <div>
                                     <label htmlFor="address" className="block text-sm font-medium dark:text-gray-200">
                                         Address
@@ -161,8 +156,6 @@ export default function Home() {
                                         {msg => <div className="text-red-600 text-sm mt-1">{msg}</div>}
                                     </ErrorMessage>
                                 </div>
-
-                                {/** Telephone */}
                                 <div>
                                     <label htmlFor="telephone" className="block text-sm font-medium dark:text-gray-200">
                                         Telephone
@@ -181,8 +174,6 @@ export default function Home() {
                                         {msg => <div className="text-red-600 text-sm mt-1">{msg}</div>}
                                     </ErrorMessage>
                                 </div>
-
-                                {/** Email */}
                                 <div>
                                     <label htmlFor="email" className="block text-sm font-medium dark:text-gray-200">
                                         Email
@@ -201,8 +192,6 @@ export default function Home() {
                                         {msg => <div className="text-red-600 text-sm mt-1">{msg}</div>}
                                     </ErrorMessage>
                                 </div>
-
-                                {/** Password */}
                                 <div>
                                     <label htmlFor="password" className="block text-sm font-medium dark:text-gray-200">
                                         Password
@@ -221,8 +210,6 @@ export default function Home() {
                                         {msg => <div className="text-red-600 text-sm mt-1">{msg}</div>}
                                     </ErrorMessage>
                                 </div>
-
-                                {/** Confirm Password */}
                                 <div>
                                     <label htmlFor="confirmPassword" className="block text-sm font-medium dark:text-gray-200">
                                         Confirm Password

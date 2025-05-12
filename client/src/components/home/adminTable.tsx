@@ -20,7 +20,6 @@ const AdminTable: React.FC = () => {
         staleTime: 5 * 60 * 1000,
     });
 
-    // adjust to your actual response shape
     const notifications: NotificationItem[] = data?.notifications ?? [];
 
     const columns = useMemo<MRT_ColumnDef<NotificationItem>[]>(

@@ -28,7 +28,7 @@ const drawerVariants: Variants = {
 
 function Drawer({ isOpen, toggleDrawerloc }: DrawerProps) {
     const [isClient, setIsClient] = useState(false);
-      const userEmail = useSelector((state: RootState) => state.user.email);
+    const userEmail = useSelector((state: RootState) => state.user.email);
     const router = useRouter();
     const pathname = usePathname();
 
@@ -45,7 +45,6 @@ function Drawer({ isOpen, toggleDrawerloc }: DrawerProps) {
 
     const handleLogout = async () => {
         try {
-            // Call logout API to remove the cookie
             const response = await logout();
             router.push("/");
             alert(response.message);
@@ -148,31 +147,31 @@ function Drawer({ isOpen, toggleDrawerloc }: DrawerProps) {
                         </span>
                     </button>
                 </motion.div>
-                   {userEmail != process.env.NEXT_PUBLIC_ADMIN_EMAIL && (
-                <motion.div
-                    className="box"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                    <button
-                        className={`w-full py-2 px-4 md:m-4 ml-1 mr-3 mt-4 mb-4 md:space-x-2 md:w-48 flex justify-start items-center
+                {userEmail != process.env.NEXT_PUBLIC_ADMIN_EMAIL && (
+                    <motion.div
+                        className="box"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
+                        <button
+                            className={`w-full py-2 px-4 md:m-4 ml-1 mr-3 mt-4 mb-4 md:space-x-2 md:w-48 flex justify-start items-center
             rounded-3xl shadow-lg 
             ${pathname === "/add_shipment" ? "bg-green-500" : "dark:bg-[linear-gradient(to_right,_#29323c,_#485563)] bg-gradient-to-r from-[#ffffff] to-[#abbaab]"}
             dark:text-white text-black
             dark:shadow-indigo-500/50 shadow-sky-500/50
             hover:shadow-none hover:bg-gray-300 hover:bg-none hover:bg-blue-600 cursor-pointer`}
-                        onClick={() => navigatePage("/add_shipment")}
-                    >
-                        <PlusCircleIcon className="w-5 h-5 mr-2 text-current" />
-                        <span
-                            className={`text-sm md:text-lg dark:text-white text-black`}
+                            onClick={() => navigatePage("/add_shipment")}
                         >
-                            {" "}
-                            Add Shipments
-                        </span>
-                    </button>
-                </motion.div>
+                            <PlusCircleIcon className="w-5 h-5 mr-2 text-current" />
+                            <span
+                                className={`text-sm md:text-lg dark:text-white text-black`}
+                            >
+                                {" "}
+                                Add Shipments
+                            </span>
+                        </button>
+                    </motion.div>
                 )}
             </div>
             <div className="p-2 ">
