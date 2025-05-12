@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "type": "module",
   "scripts": {
-    "postinstall": "prisma generate",
+      "postinstall": "prisma generate && prisma migrate deploy",
     "dev": "tsc --watch & nodemon dist/server.js",
     "start": "node dist/server.js",
     "build": "tsc",
