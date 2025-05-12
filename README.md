@@ -60,6 +60,8 @@ A simple yet powerful CRUD application for managing shipments.
 >>
 >└── server   # Backend - NestJS
 >>
+<img width="1429" alt="Screenshot 2025-05-12 at 13 10 11" src="https://github.com/user-attachments/assets/04e5d9cf-d80a-4754-ba76-4bc7522c01cd" />
+
 <img width="456" alt="Screenshot 2025-05-12 at 12 10 39" src="https://github.com/user-attachments/assets/62e24026-fe02-4095-8969-3318d8df86fc" />
 
 <img width="1429" alt="Screenshot 2025-05-12 at 12 11 43" src="https://github.com/user-attachments/assets/020a71fe-4c4e-43bb-893d-ff0a5f998780" />
