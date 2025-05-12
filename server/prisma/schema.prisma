@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ShipmentStatus {
+  PENDING
+  ON_ROUTE_TO_COLLECT
+  COLLECTED
+  SHIPPED
+  COMPLETED
+  CANCELED
+}
+
+model User {
+  id            Int             @id @default(autoincrement())
+  firstName     String
+  lastName      String
+  email         String          @unique
+  address       String
+  telephone     String
+  password      String
+  shipments     Shipment[]      @relation("UserShipments")
+  notifications Notification[]  @relation("UserNotifications")
+}
+
+model Shipment {
+  id                 Int              @id @default(autoincrement())
+  shippingId         String           @unique
+  senderAddress      String
+  receiverFirstName  String
+  receiverLastName   String
+  receiverAddress    String
+  receiverTelephone  String
+  status             ShipmentStatus   @default(PENDING)
+  requestCancel      Boolean          @default(false)
+  placedDate         DateTime         @default(now())
+  collectedDate      DateTime?
+  shippedDate        DateTime?
+  completedDate      DateTime?
+  canceledDate       DateTime?
+  delayFlag          Boolean          @default(false)
+  userId             Int
+  user               User             @relation("UserShipments", fields: [userId], references: [id])
+  notifications      Notification[]   @relation("ShipmentNotifications")
+  weight             Float
+}
+
+model Notification {
+  id          Int        @id @default(autoincrement())
+  title       String
+  description String
+  date        DateTime   @default(now())
+  viewed      Boolean    @default(false)
+  userId      Int
+  shipmentId  Int
+  user        User       @relation("UserNotifications", fields: [userId], references: [id])
+  shipment    Shipment   @relation("ShipmentNotifications", fields: [shipmentId], references: [id])
+}
+
