@@ -60,6 +60,7 @@ export default function Home() {
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 dispatch(setUserDetails((res as any)?.user));
                 alert(res.message);
+                router.push('/home');
             } else {
                 alert(res.message);
             }
