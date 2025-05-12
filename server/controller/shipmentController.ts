@@ -157,6 +157,7 @@ export const getAllShipmentsUser = async (req: Request, res: Response) => {
       return;
     }
     const shipments = await prisma.shipment.findMany({
+       where: { userId: user.id },  
       select: {
         shippingId: true,
         senderAddress: true,
