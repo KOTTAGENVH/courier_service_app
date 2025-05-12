@@ -8,6 +8,8 @@ import { faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { BriefcaseIcon, HomeIcon, PlusCircleIcon, UserCircleIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "react-redux";
 import { RootState } from "@/global_redux/store";
+import { useDispatch } from "react-redux";
+import { setLogout } from "@/global_redux/feature/userSlice";
 
 interface DrawerProps {
     isOpen: boolean;
@@ -31,6 +33,7 @@ function Drawer({ isOpen, toggleDrawerloc }: DrawerProps) {
     const userEmail = useSelector((state: RootState) => state.user.email);
     const router = useRouter();
     const pathname = usePathname();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         setIsClient(true);
@@ -46,6 +49,7 @@ function Drawer({ isOpen, toggleDrawerloc }: DrawerProps) {
     const handleLogout = async () => {
         try {
             const response = await logout();
+            dispatch(setLogout());
             router.push("/");
             alert(response.message);
         } catch {
